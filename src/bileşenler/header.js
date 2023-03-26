@@ -11,6 +11,25 @@ const Header = (baslik, tarih, yazi) => {
   //    <span class="temp">{ yazi }</span>
   //  </div>
   //
+  const _headerdiv=document.createElement("div");
+  _headerdiv.classList.add("header");
+
+  const _spanDate=document.createElement("span");
+  _spanDate.classList.add("date");
+  _spanDate.textContent=tarih;
+  _headerdiv.appendChild(_spanDate);
+
+  const _h1Baslik=document.createElement("h1");
+  _h1Baslik.textContent=baslik;
+  _headerdiv.appendChild(_h1Baslik);
+
+  const _spanTemp=document.createElement("span");
+  _spanTemp.classList.add("temp");
+  _spanTemp.textContent=yazi;
+  _headerdiv.appendChild(_spanTemp);
+
+  return _headerdiv;
+  
 }
 
 const headerEkleyici = (secici) => {
@@ -23,7 +42,14 @@ const headerEkleyici = (secici) => {
 
   // İPUCU: querySelector bir string alabilir (bknz: querySelector("#wrapper")) 
   // fakat aynı zamanda bir değişken de alabilir (bknz: querySelector(secici))
- 
+  const _headerCont=document.querySelector(secici);
+  const objHeader={
+    baslik:"Din, Bilim, Darwin",
+    tarih:"26.03.2023",
+    yazi:"Temmuz Çetiner"
+  }
+  const _header=Header(objHeader.baslik,objHeader.tarih,objHeader.yazi);
+ _headerCont.appendChild(_header);
 }
 
 export { Header, headerEkleyici }
